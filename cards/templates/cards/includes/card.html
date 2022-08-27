@@ -1,0 +1,5 @@
+{% load humanize %}
+<article>
+  {{ card }}
+  <footer><small>Created: {{ card.date_created|naturaltime }}</small></footer>
+</article>

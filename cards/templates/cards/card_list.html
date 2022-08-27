@@ -8,11 +8,7 @@
     {% ifchanged %}
     <h3>📦 {{ card.box | ordinal }} Box</h3>
     {% endifchanged %}
-    <article>
-      {{ card }}
-      <footer><small>Created: {{ card.date_created|naturaltime }}</small></footer>
-
-    </article>
+    {% include 'cards/includes/card.html' %}
   {% endfor %}
 
 {% endblock %}
