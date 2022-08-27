@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     "django.contrib.humanize",
     # other apps
     "import_export",
-    "django_nose",
     # my apps
     "cards.apps.CardsConfig",
 ]
@@ -140,14 +139,4 @@ INTERNAL_IPS = [
     # ...
     "127.0.0.1",
     # ...
-]
-
-# Use nose to run all tests
-TEST_RUNNER = "django_nose.NoseTestSuiteRunner"
-
-# Tell nose to measure coverage on the 'foo' and 'bar' apps
-NOSE_ARGS = [
-    "--with-coverage",
-    "--cover-html",
-    "--cover-package=cards",
 ]
