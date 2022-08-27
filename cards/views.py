@@ -1,12 +1,13 @@
 import random
 
+from django.contrib import messages
+from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy
+from django.views.generic import ListView, CreateView, UpdateView
 
 from .forms import CardForm, CardCheckForm
 from .models import Card
-from django.views.generic import ListView, CreateView, UpdateView
-from django.contrib.messages.views import SuccessMessageMixin
 
 
 # widok funkcyjny
@@ -82,4 +83,8 @@ class BoxView(CardListView):
         if form.is_valid():
             card = get_object_or_404(Card, id=form.cleaned_data["card_id"])
             card.move(form.cleaned_data["solved"])
+            if form.cleaned_data["solved"]:
+                messages.add_message(request, messages.SUCCESS, "Brawo.")
+            else:
+                messages.add_message(request, messages.ERROR, "Spróbuj jeszcze raz.")
         return redirect(request.META.get("HTTP_REFERER"))

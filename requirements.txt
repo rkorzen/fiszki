@@ -1,2 +1,5 @@
 django==4.0.4
 ipython
+django-import-export==2.8.0
+django-nose
+coverage
