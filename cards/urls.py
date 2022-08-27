@@ -6,5 +6,6 @@ from . import views
 
 urlpatterns = [
     # path("", TemplateView.as_view(template_name="cards/base.html"), name="home"),  # /
-    path("", views.card_list, name="card-list"),  # /
+    path("f/", views.card_list, name="card-list"),  # /
+    path("", views.CardListView.as_view(), name="card-list"),  # /
 ]

@@ -8,6 +8,8 @@
     <h3>📦 {{ card.box }} Box</h3>
     <article>
       {{ card }}
+      <footer><small>Created: {{ card.date_created.isoformat }}</small></footer>
+
     </article>
   {% endfor %}
 
