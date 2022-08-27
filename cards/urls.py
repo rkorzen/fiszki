@@ -12,4 +12,5 @@ urlpatterns = [
     path("new/", views.CardCreateView.as_view(), name="card-create"),  # /new/
     path("f/edit/<int:pk>/", views.update_view, name="card-update-f"),  # /new/
     path("edit/<int:pk>/", views.CardUpdateView.as_view(), name="card-update"),  # /new/
+    path("box/<int:box_num>", views.BoxView.as_view(), name="box"),
 ]
