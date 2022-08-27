@@ -3,9 +3,12 @@
 
 {% block content %}
   <h2>{{ box_number | ordinal }} Box</h2>
-  <mark>{{ object_list | length }}</mark> Card{{ object_list | pluralize }} left in box
+  <mark>{{ card_list | length }}</mark> Card{{ card_list | pluralize }} left in box
   <hr>
-  {% for card in object_list %}
-    {% include "cards/includes/card.html" %}
-  {% endfor %}
+{#  {% for card in object_list %}#}
+{#    {% include "cards/includes/card.html" %}#}
+{#  {% endfor %}#}
+  {% if check_card %}
+  {% include "cards/includes/card.html" with card=check_card %}
+  {% endif %}
 {% endblock %}
