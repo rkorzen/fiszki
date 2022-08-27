@@ -1,5 +1,9 @@
 {% load humanize %}
 <article>
   {{ card }}
+  <hr>
+  <a href="{% url 'card-update' card.id %}" role="button">Edit Card</a>
+  <hr>
   <footer><small>Created: {{ card.date_created|naturaltime }}</small></footer>
+
 </article>
