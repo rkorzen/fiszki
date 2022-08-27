@@ -54,6 +54,12 @@
     small {
         font-size: 0.5em;
     }
+
+    .success {
+        background-color: lightgreen;
+        border: 1px solid var(--border);
+        border-radius: 5px;
+    }
 </style>
 
 
@@ -63,8 +69,18 @@
   <h1>Flashcards App</h1>
 </header>
 <main>
+{% if messages %}
+  <ul class="messages">
+    {% for message in messages %}
+      <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+        {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Important: {% endif %}
+        {{ message }}
+    </li>
+    {% endfor %}
+</ul>
+{% endif %}
   {% block content %}
-      <h2>Welcome to your Flashcards app!</h2>
+    <h2>Welcome to your Flashcards app!</h2>
   {% endblock %}
 </main>
 

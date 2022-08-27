@@ -1,9 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 
 from .forms import CardForm
 from .models import Card
 from django.views.generic import ListView, CreateView, UpdateView
+from django.contrib.messages.views import SuccessMessageMixin
+
 
 # widok funkcyjny
 def card_list(request):
@@ -30,10 +32,11 @@ def card_create(request):
     return render(request, "cards/card_form.html", {"form": form})
 
 
-class CardCreateView(CreateView):
+class CardCreateView(SuccessMessageMixin, CreateView):
     model = Card
     fields = ["question", "answer", "box"]
     success_url = reverse_lazy("card-create")
+    success_message = "Karta utworzona!"
 
 
 # update
@@ -48,8 +51,10 @@ def update_view(request, pk):
         form = CardForm(data=request.POST, instance=card)
         if form.is_valid():
             form.save()
+        return redirect(reverse_lazy("card-list"))
     return render(request, "cards/card_form.html", {"form": form})
 
 
-class CardUpdateView(UpdateView):
-    pass
+class CardUpdateView(CardCreateView, UpdateView):
+    success_url = reverse_lazy("card-list")
+    success_message = "Karta zaktualizowana!"
