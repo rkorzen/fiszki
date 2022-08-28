@@ -23,9 +23,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-(ty42b!5dq0_%(qyo15$cz6%7=wokc)odaloi_f37s!4ddkr-6"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["127.0.0.1"]
+CSRF_TRUSTED_ORIGINS = ["https://arcane-falls-97243.herokuapp.com"]
 
 
 # Application definition
