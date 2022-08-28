@@ -2,6 +2,7 @@ import random
 
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
+from django.http import Http404
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView
@@ -68,6 +69,9 @@ class BoxView(CardListView):
     form_class = CardCheckForm
 
     def get_queryset(self):
+        box_nr = self.kwargs["box_num"]
+        if box_nr > 5:
+            raise Http404
         return Card.objects.filter(box=self.kwargs["box_num"])
 
     def get_context_data(self, **kwargs):
