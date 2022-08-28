@@ -4,3 +4,4 @@ django-import-export==2.8.0
 pytest
 pytest-django
 pytest-cov
+django-heroku
