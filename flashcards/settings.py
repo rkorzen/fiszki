@@ -140,7 +140,7 @@ INTERNAL_IPS = [
     "127.0.0.1",
     # ...
 ]
-CSRF_COOKIE_SECURE = True
+# CSRF_COOKIE_SECURE = True
 
 
 import django_heroku
